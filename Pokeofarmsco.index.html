@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Pokémon o Fármaco?</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 20px; background: #f4f4f9; }
+    .card { background: white; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    button { margin: 10px; padding: 10px 20px; font-size: 16px; cursor: pointer; border: none; border-radius: 5px; }
+    .btn-pkmn { background: #ffcb05; color: #1d2c5e; font-weight: bold; }
+    .btn-drug { background: #4caf50; color: white; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>¿Pokémon o Fármaco?</h2>
+    <h1 id="word">Cargando...</h1>
+    <button class="btn-pkmn" onclick="check('Pokemon')">Pokémon</button>
+    <button class="btn-drug" onclick="check('Drug')">Fármaco</button>
+    <p id="score">Puntos: 0</p>
+  </div>
+
+  <script>
+    const items = [
+      { name: "Duosion", type: "Pokemon" }, { name: "Ramelteon", type: "Drug" },
+      { name: "Zydelig", type: "Drug" }, { name: "Braixen", type: "Pokemon" },
+      { name: "Evenity", type: "Drug" }, { name: "Yorvipath", type: "Drug" },
+      { name: "Amaura", type: "Pokemon" }, { name: "Veluza", type: "Pokemon" },
+      { name: "Rellor", type: "Pokemon" }, { name: "Nerlynx", type: "Drug" },
+      { name: "Phexxi", type: "Drug" }, { name: "Lokix", type: "Pokemon" },
+      { name: "Gocovri", type: "Drug" }, { name: "Overqwil", type: "Pokemon" },
+      { name: "Fezandipiti", type: "Pokemon" }, { name: "Cufant", type: "Pokemon" },
+      { name: "Casodex", type: "Drug" }, { name: "Diancie", type: "Pokemon" },
+      { name: "Joenja", type: "Drug" }, { name: "Firazyr", type: "Drug" }
+    ];
+    let current = 0, score = 0;
+
+    function show() {
+      if(current < items.length) {
+        document.getElementById('word').innerText = items[current].name;
+      } else {
+        document.getElementById('word').innerText = `¡Juego Terminado! Final: ${score}/${items.length}`;
+      }
+    }
+
+    function check(choice) {
+      if(items[current].type === choice) score++;
+      current++;
+      document.getElementById('score').innerText = `Puntos: ${score}`;
+      show();
+    }
+    show();
+  </script>
+</body>
+</html>
